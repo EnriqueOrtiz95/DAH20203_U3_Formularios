@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myForm" class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-label possition="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="myForm.get('name').errors && (myForm.get('name').touched || sumitted || myForm.get('name').dirty)">
+        <ion-text color="danger">El nombre es obligatorio</ion-text>
+      </ion-item>
+
+      <ion-item>
+        <ion-label possition="floating">Número de control</ion-label>
+        <ion-input type="text" formControlName="controlNumber"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="myForm.get('controlNumber').errors && (myForm.get('controlNumber').touched || sumitted || myForm.get('controlNumber').dirty)">
+        <ion-text color="danger">El número de control es obligatorio</ion-text>
+      </ion-item>
+
+    </ion-list>
+    <ion-button (click)="saveStudent()" expand="block" shape="round">
+      Guardar
+    </ion-button>
+  </form>
+</ion-content>
